@@ -1,5 +1,6 @@
 let num = prompt('Enter a number between 1 and 100');
-while (num > 100 || num < 0)
+
+while (num > 100 || num < 0 || isNaN(num))
 {
 	num = prompt('Error: Number is out of range. Enter a number between 1 and 100');
 }
