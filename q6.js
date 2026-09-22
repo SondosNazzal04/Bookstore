@@ -1,33 +1,32 @@
 let num = prompt('enter a number:');
-let input = parseInt(num);
 let res;
-switch (input)
+switch (num)
 {
-	case 1:
+	case '1':
 		res = 'ONE';
 		break;
-	case 2:
+	case '2':
 		res = 'TWO';
 		break;
-	case 3:
+	case '3':
 		res = 'THREE';
 		break;
-	case 4:
+	case '4':
 		res = 'FOUR';
 		break;
-	case 5:
+	case '5':
 		res = 'FIVE';
 		break;
-	case 6:
+	case '6':
 		res = 'SIX';
 		break;
-	case 7:
+	case '7':
 		res = 'SEVEN';
 		break;
-	case 8:
+	case '8':
 		res = 'EIGHT';
 		break;
-	case 9:
+	case '9':
 		res = 'NINE';
 		break;
 	default:
