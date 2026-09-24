@@ -49,3 +49,14 @@ informationArray = applyDiscount(informationArray);
 let availableGenres = ['Fiction', 'Science', 'History', 'Biography'];
 
 printInformation(informationArray);
+
+function addNewGenre(genre)
+{
+	availableGenres.push(genre);
+}
+
+function displayGenres()
+{
+	for (let i = 0; i < availableGenres.length; i++)
+		console.log('- We offer: ' + availableGenres[i]);
+}
