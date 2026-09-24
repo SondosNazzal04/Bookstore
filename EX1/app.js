@@ -17,6 +17,16 @@ function printInformation(informationArray)
 		console.log(informationArray[i]);
 }
 
+function applyDiscount(userData)
+{
+	let newUserData = userData;
+	if (userData[1] == 'student')
+		newUserData.push('20% Discount');
+	else
+		newUserData.push('No Discount');
+	return newUserData;
+}
+
 let username = prompt("Please enter your name:");
 let membership = prompt("Please eneter your membership type:");
 membership = membership.toLowerCase();
@@ -33,5 +43,9 @@ let borrowedBook = prompt("Please enter the title of the book that you want to b
 alert(borrowedBook + ' book is being reserved!');
 
 let informationArray = [username, membership, prefrence, borrowedBook];
+
+informationArray = applyDiscount(informationArray);
+
+let availableGenres = ['Fiction', 'Science', 'History', 'Biography'];
 
 printInformation(informationArray);
