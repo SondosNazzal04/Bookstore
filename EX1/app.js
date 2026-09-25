@@ -54,7 +54,9 @@ alert(borrowedBook + ' book is being reserved!');
 let informationArray = [username, membership, prefrence, borrowedBook];
 
 informationArray = applyDiscount(informationArray);
-startShopping();
+let [cartBooks, cartPrices] = startShopping();
+let total = calculateTotal(cartPrices, membership);
+printRecipt();
 
 let availableGenres = ['Fiction', 'Science', 'History', 'Biography'];
 
@@ -105,4 +107,15 @@ function calculateTotal(pricesArray, membershipType)
 	else
 		total = sum;
 	return total;
+}
+
+function printRecipt()
+{
+	console.log('user ' + username + ', with membership ' + membership);
+	console.log('items number: ' + cartBooks.length);
+	for (let i = 0; i < cartBooks.length; i++)
+	{
+		console.log('- ' + cartBooks[i] + '\t' + cartPrices[i]);
+	}
+	console.log(total);
 }
