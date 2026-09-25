@@ -54,6 +54,7 @@ alert(borrowedBook + ' book is being reserved!');
 let informationArray = [username, membership, prefrence, borrowedBook];
 
 informationArray = applyDiscount(informationArray);
+startShopping();
 
 let availableGenres = ['Fiction', 'Science', 'History', 'Biography'];
 
@@ -68,4 +69,25 @@ function displayGenres()
 {
 	for (let i = 0; i < availableGenres.length; i++)
 		console.log('- We offer: ' + availableGenres[i]);
+}
+
+function startShopping()
+{
+	let cartBooks = [];
+	let cartPrices = [];
+
+	let bookName = prompt('Please Enter a book name:\nWrite checkout to finish');
+	while (bookName != 'checkout')
+	{
+		let index = availableBooks.indexOf(bookName);
+		if (index != -1)
+		{
+			cartBooks.push(availableBooks[index]);
+			cartPrices.push(bookPrices[index]);
+		}
+		else
+			alert('Book is out of stock.');
+		bookName = prompt('Please Enter a book name:\nWrite checkout to finish');
+	}
+	return [cartBooks, cartPrices];
 }
