@@ -91,3 +91,18 @@ function startShopping()
 	}
 	return [cartBooks, cartPrices];
 }
+
+function calculateTotal(pricesArray, membershipType)
+{
+	let sum = 0;
+	let total = 0;
+	for (let i = 0; i < pricesArray.length; i++)
+	{
+		sum += pricesArray[i];
+	}
+	if (membershipType == 'student')
+		total = sum - sum * 0.2;
+	else
+		total = sum;
+	return total;
+}
