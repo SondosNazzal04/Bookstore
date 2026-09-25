@@ -27,14 +27,23 @@ function applyDiscount(userData)
 	return newUserData;
 }
 
+
+
 let username = prompt("Please enter your name:");
 let membership = prompt("Please eneter your membership type:");
-membership = membership.toLowerCase();
+availableBooks = ["Clean Code", "JS for Beginners", "C# in Depth", "Web Design"];
+bookPrices = [20, 15, 30, 10];
 
-while (checkMembership(membership))
+function getValidMemebership()
 {
-	membership = prompt('please enter your membership type:\n(student, regular)');
+	let validembership = membership.toLowerCase();
+	while (checkMembership(validembership))
+	{
+		validembership = prompt('please enter your membership type:\n(student, regular)');
+	}
+	return validembership;
 }
+membership = getValidMemebership();
 
 welcomeUser(username, membership);
 
