@@ -1,25 +1,43 @@
-let username = prompt("Please enter your name:");
-let membership = prompt("Please eneter your membership type:");
-availableBooks = ["Clean Code", "JS for Beginners", "C# in Depth", "Web Design"];
-bookPrices = [20, 15, 30, 10];
-membership = getValidMemebership();
-
-welcomeUser(username, membership);
-
-let prefrence = prompt("Do you prefer fiction or non-fiction book genre");
-let borrowedBook = prompt("Please enter the title of the book that you want to borrow:");
-alert(borrowedBook + ' book is being reserved!');
-
-let informationArray = [username, membership, prefrence, borrowedBook];
-
-informationArray = applyDiscount(informationArray);
-let [cartBooks, cartPrices] = startShopping();
-let total = calculateTotal(cartPrices, membership);
-printRecipt();
-
+let availableBooks = ["Clean Code", "JS for Beginners", "C# in Depth", "Web Design"];
+let bookPrices = [20, 15, 30, 10];
 let availableGenres = ['Fiction', 'Science', 'History', 'Biography'];
 
-printInformation(informationArray);
+let username;
+let membership;
+let prefrence;
+let borrowedBook;
+let informationArray;
+let cartBooks = [];
+let cartPrices = [];
+let total = 0;
+
+let form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+	username = document.querySelector('#name-input').value;
+	membership = document.querySelector('#member-radio').checked ?
+	document.querySelector('#member-radio').value :
+	document.querySelector('#student-radio').checked ?
+	document.querySelector('#student-radio').value : null;
+	prefrence = document.querySelector('#book-genre').value;
+	borrowedBook = document.querySelector('#book-title').value;
+
+
+	welcomeUser(username, membership);
+	alert(borrowedBook + ' book is being reserved!');
+
+	informationArray = [username, membership, prefrence, borrowedBook];
+	informationArray = applyDiscount(informationArray);
+
+	printInformation(informationArray);
+
+
+	[cartBooks, cartPrices] = startShopping();
+
+	total = calculateTotal(cartPrices, membership);
+	printRecipt();
+
+});
 
 function addNewGenre(genre)
 {
@@ -106,14 +124,4 @@ function applyDiscount(userData)
 	else
 		newUserData.push('No Discount');
 	return newUserData;
-}
-
-function getValidMemebership()
-{
-	let validembership = membership.toLowerCase();
-	while (checkMembership(validembership))
-	{
-		validembership = prompt('please enter your membership type:\n(student, regular)');
-	}
-	return validembership;
 }
