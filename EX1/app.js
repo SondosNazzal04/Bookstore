@@ -14,6 +14,10 @@ let total = 0;
 let form = document.querySelector('form');
 
 form.addEventListener('submit', (event) => {
+	event.preventDefault();
+	let resultCard = document.querySelector('#result-card');
+	resultCard.innerHTML = '';
+
 	username = document.querySelector('#name-input').value;
 	membership = document.querySelector('#member-radio').checked ?
 	document.querySelector('#member-radio').value :
@@ -23,13 +27,18 @@ form.addEventListener('submit', (event) => {
 	borrowedBook = document.querySelector('#book-title').value;
 
 
-	welcomeUser(username, membership);
-	alert(borrowedBook + ' book is being reserved!');
+	let welcomeH1 = document.createElement('h1');
+	welcomeH1.textContent = welcomeUser(username, membership);
+	resultCard.appendChild(welcomeH1);
+	let reservation = document.createElement('p');
+	reservation.textContent = borrowedBook + ' book is being reserved!';
+	resultCard.appendChild(reservation);
 
 	informationArray = [username, membership, prefrence, borrowedBook];
 	informationArray = applyDiscount(informationArray);
 
-	printInformation(informationArray);
+	let informationDiv = printInformation(informationArray);
+	resultCard.appendChild(informationDiv);
 
 
 	[cartBooks, cartPrices] = startShopping();
@@ -105,15 +114,22 @@ function checkMembership(membership)
 function welcomeUser(username, membership)
 {
 	if (membership == 'student')
-		alert('Welcome Scholar ' + username);
+		return('Welcome Scholar ' + username);
 	else
-		alert('Welcome Member ' + username);
+		return('Welcome Member ' + username);
 }
 
 function printInformation(informationArray)
 {
-	for (let i = 0; i < informationArray.length; i++)
-		console.log(informationArray[i]);
+	let informationDiv = document.createElement('div');
+	informationDiv.innerHTML = `
+		<p>Name: ${informationArray[0]}</p>
+		<p>Membership: ${informationArray[1]}</p>
+		<p>Preference: ${informationArray[2]}</p>
+		<p>Borrowed Book: ${informationArray[3]}</p>
+		<p>Discount: ${informationArray[4]}</p>
+	`;
+	return informationDiv;
 }
 
 function applyDiscount(userData)
