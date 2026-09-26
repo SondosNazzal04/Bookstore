@@ -21,6 +21,35 @@
 		</nav>
 	</header>
 	<main>
+		<section class="book-form">
+			<form action="">
+				<div class="input-field">
+					<label for="name-input">Name:</label>
+					<input type="text" id="name-input">
+				</div>
+				<div class="input-field">
+					<label for="membership-type">Membership Type:</label>
+					<span class="membership-type">
+						<input type="radio" name="membership-radio" id="student-radio" value="student">
+						<label for="student-radio">Student</label>
+						<input type="radio" name="membership-radio" id="member-radio" value="member">
+						<label for="member-radio">Member</label>
+					</span>
+				</div>
+				<div class="input-field">
+					<label for="book-genre">What is the genre of books that you prefer?</label>
+					<input type="text" id="book-genre">
+				</div>
+				<div class="input-field">
+					<label for="book-title">What is the title of books that you want to borrow?</label>
+					<input type="text" id="book-title">
+				</div>
+				<button type="submit">Submit</button>
+			</form>
+			<div id="result-card">
+				
+			</div>
+		</section>
 		<section class="books" id="books-section">
 			<h1>Books</h1>
 			<div class="books-container">

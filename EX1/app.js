@@ -1,48 +1,7 @@
-function checkMembership(membership)
-{
-	return membership != 'student' && membership != 'regular';
-}
-
-function welcomeUser(username, membership)
-{
-	if (membership == 'student')
-		alert('Welcome Scholar ' + username);
-	else
-		alert('Welcome Member ' + username);
-}
-
-function printInformation(informationArray)
-{
-	for (let i = 0; i < informationArray.length; i++)
-		console.log(informationArray[i]);
-}
-
-function applyDiscount(userData)
-{
-	let newUserData = userData;
-	if (userData[1] == 'student')
-		newUserData.push('20% Discount');
-	else
-		newUserData.push('No Discount');
-	return newUserData;
-}
-
-
-
 let username = prompt("Please enter your name:");
 let membership = prompt("Please eneter your membership type:");
 availableBooks = ["Clean Code", "JS for Beginners", "C# in Depth", "Web Design"];
 bookPrices = [20, 15, 30, 10];
-
-function getValidMemebership()
-{
-	let validembership = membership.toLowerCase();
-	while (checkMembership(validembership))
-	{
-		validembership = prompt('please enter your membership type:\n(student, regular)');
-	}
-	return validembership;
-}
 membership = getValidMemebership();
 
 welcomeUser(username, membership);
@@ -118,4 +77,43 @@ function printRecipt()
 		console.log('- ' + cartBooks[i] + '\t' + cartPrices[i]);
 	}
 	console.log(total);
+}
+
+function checkMembership(membership)
+{
+	return membership != 'student' && membership != 'regular';
+}
+
+function welcomeUser(username, membership)
+{
+	if (membership == 'student')
+		alert('Welcome Scholar ' + username);
+	else
+		alert('Welcome Member ' + username);
+}
+
+function printInformation(informationArray)
+{
+	for (let i = 0; i < informationArray.length; i++)
+		console.log(informationArray[i]);
+}
+
+function applyDiscount(userData)
+{
+	let newUserData = userData;
+	if (userData[1] == 'student')
+		newUserData.push('20% Discount');
+	else
+		newUserData.push('No Discount');
+	return newUserData;
+}
+
+function getValidMemebership()
+{
+	let validembership = membership.toLowerCase();
+	while (checkMembership(validembership))
+	{
+		validembership = prompt('please enter your membership type:\n(student, regular)');
+	}
+	return validembership;
 }
