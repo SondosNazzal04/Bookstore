@@ -30,7 +30,27 @@ let successMessage = document.createElement('p');
 successMessage.setAttribute('style', 'background-color: green; color: white;');
 successMessage.textContent = 'You registered Successfully';
 
+let highlightedParagraph = document.getElementById('8-char-highlight');
+let resultParagraph = document.createElement('div');
+let words = highlightedParagraph.textContent.split(/\s+/);
+words.forEach((word) => {
+	let highlightedWord = document.createElement('span');
+	highlightedWord.setAttribute('style', 'background-color: yellow;');
+	let normalWord = document.createElement('span');
+	if (word.trim().length > 8)
+	{
+		highlightedWord.textContent = word + ' ';
+		console.log(word.trim().length);
+		resultParagraph.appendChild(highlightedWord);
+	}
+	else
+	{
+		normalWord.textContent = word + ' ';
+		resultParagraph.appendChild(normalWord);
+	}
+});
 
+highlightedParagraph.replaceWith(resultParagraph);
 
 let inputFields = document.querySelectorAll('input');
 
