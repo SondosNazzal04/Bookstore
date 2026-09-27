@@ -20,15 +20,21 @@ confirmPasswordLable.textContent = 'confirm password: ';
 confirmPasswordInput.parentNode.insertBefore(confirmPasswordLable, confirmPasswordInput);
 
 let btn = document.getElementById('register-btn');
+let errorMessage = document.createElement('p');
+errorMessage.setAttribute('style', 'background-color: red; color: white;');
+
 btn.addEventListener('click', (event) => {
 	event.preventDefault();
 
 	if (passwordInput.value != confirmPasswordInput.value)
 	{
-		let errorMessage = document.createElement('p');
 		errorMessage.textContent = 'Password does not match the confirm password';
-		errorMessage.setAttribute('style', 'background-color: red; color: white;');
 		errorMessage.setAttribute('id', 'error-message');
 		confirmPasswordInput.after(errorMessage);
+	}
+	else
+	{
+		console.log('here');
+		errorMessage.remove();
 	}
 });
