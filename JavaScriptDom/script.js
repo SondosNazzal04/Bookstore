@@ -23,6 +23,13 @@ let btn = document.getElementById('register-btn');
 btn.disabled = true;
 let errorMessage = document.createElement('p');
 errorMessage.setAttribute('style', 'background-color: red; color: white;');
+let successMessage = document.createElement('p');
+successMessage.setAttribute('style', 'background-color: green; color: white;');
+
+btn.addEventListener('click', () => {
+	successMessage.textContent = 'You registered Successfully';
+	confirmPasswordInput.after(successMessage);
+});
 
 confirmPasswordInput.addEventListener('input', (event) => {
 	event.preventDefault();
@@ -32,11 +39,11 @@ confirmPasswordInput.addEventListener('input', (event) => {
 		errorMessage.textContent = 'Password does not match the confirm password';
 		errorMessage.setAttribute('id', 'error-message');
 		confirmPasswordInput.after(errorMessage);
+		successMessage.remove();
 		btn.disabled = true;
 	}
 	else
 	{
-		console.log('here');
 		errorMessage.remove();
 		btn.disabled = false;
 	}
