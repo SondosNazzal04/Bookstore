@@ -20,14 +20,34 @@ confirmPasswordLable.textContent = 'confirm password: ';
 confirmPasswordInput.parentNode.insertBefore(confirmPasswordLable, confirmPasswordInput);
 
 let btn = document.getElementById('register-btn');
-btn.disabled = true;
+// btn.disabled = true;
+
 let errorMessage = document.createElement('p');
 errorMessage.setAttribute('style', 'background-color: red; color: white;');
+errorMessage.textContent = 'Password does not match the confirm password';
+
 let successMessage = document.createElement('p');
 successMessage.setAttribute('style', 'background-color: green; color: white;');
+successMessage.textContent = 'You registered Successfully';
+
+
+
+let inputFields = document.querySelectorAll('input');
+
+inputFields.forEach((inputField) =>{
+	let requiredMessage = document.createElement('p');
+	requiredMessage.setAttribute('style', 'background-color: red; color: white;');
+	requiredMessage.textContent = 'This Field is Required';
+
+	btn.addEventListener('click', (event) => {
+		if (inputField.value == '')
+			inputField.after(requiredMessage);
+		else
+			requiredMessage.remove();
+	});
+});
 
 btn.addEventListener('click', () => {
-	successMessage.textContent = 'You registered Successfully';
 	confirmPasswordInput.after(successMessage);
 });
 
@@ -36,15 +56,13 @@ confirmPasswordInput.addEventListener('input', (event) => {
 
 	if (passwordInput.value != confirmPasswordInput.value)
 	{
-		errorMessage.textContent = 'Password does not match the confirm password';
-		errorMessage.setAttribute('id', 'error-message');
 		confirmPasswordInput.after(errorMessage);
 		successMessage.remove();
-		btn.disabled = true;
+		// btn.disabled = true;
 	}
 	else
 	{
 		errorMessage.remove();
-		btn.disabled = false;
+		// btn.disabled = false;
 	}
 });
